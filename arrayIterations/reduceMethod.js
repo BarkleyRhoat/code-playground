@@ -30,8 +30,9 @@ let books = [
 // let total = books.reduce(reducer, 0);
 
 const reducer = (accumulator, item) => {
-    console.log(accumulator, item)
-    return accumulator +", " + item.title
-}
+  let total = item.price * item.inventory;
+  return accumulator + total;
+};
 
-let total = books.reduce(reducer, '').substring(2)
+let total = books.reduce(reducer, 0);
+console.log(total);

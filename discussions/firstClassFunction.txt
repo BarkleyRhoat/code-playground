@@ -1,0 +1,54 @@
+Discussion Questions: First Class Functions
+We’ll work through four bite-sized examples that build on one another. After each snippet:
+Predict the output.
+Spot how functions are treated as values.
+Compare with the previous example.
+
+Example 1: Assigning a Function to a Variable
+function greet(name) {
+  return "Hello, " + name;
+}
+
+const sayHello = greet;
+console.log(sayHello("Charlie"));  // ?
+Q1: What prints to the console? // Hello Charlie
+Q2: When we do const sayHello = greet;, does greet run immediately? // No we didn't call it sayHello()
+Q3: How are greet and sayHello related “under the hood”? // function greet is stored in variable sayHello
+
+Example 2: Passing a Function In
+function shout(text) {
+  return text.toUpperCase();
+}
+
+function speak(fn, message) {
+  return fn(message) + "!";
+}
+
+console.log(speak(shout, "hello")); 
+console.log(speak(greet, "Dana"));   
+Q1: What prints for each console.log? // HELLO!, Hello, Dana! 
+Q2: How does speak use its first parameter? // it is a callback from the function above.
+Q3: How is this different from directly calling shout("hello") + "!" or greet("Dana") + "!"? //
+
+Example 3: Returning a Function
+function createGreeter(name) {
+  return function() {
+    return "Hi, " + name;
+  };
+}
+
+const greetAlice = createGreeter("Alice");
+console.log(greetAlice());  // ?
+Q1: What prints when we call greetAlice()? // Hi, Alice
+Q2: What does createGreeter("Alice") actually return? // it returns an anonymous function. 
+Q3: Compare this to Example 2—how are we using functions as values differently now? // example 2 is taking in a function and example 3 is passing a function
+
+Example 4: Inspecting a Function vs. Invoking It
+// From Example 2 and 3:
+console.log(speak);             // ?
+console.log(speak(shout, "hi"));  
+console.log(createGreeter);     
+console.log(createGreeter("Bob"));
+Q1: What prints for each console.log? // 
+Q2: Why do some lines show the function’s definition while others show a string? //
+Q3: What does this tell you about functions as first-class values, compared to Examples 1–3? //

@@ -55,4 +55,4 @@ Example 7: // implicit
   readBooks("The Old Man and the Sea", "1984"); // "I read 'The Old Man and the Sea' and '1984'"
 
 Example 8: // implicit  you need to put the arguments in () since there are multiple. 
-  const readBooks = book1, book2 => `I read '${book1}' and '${book2}'` // Syntax Error
+  const readBooks = book1, book2 => `I read '${book1}' and '${book2}'` // Syntax Error.
