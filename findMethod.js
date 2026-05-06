@@ -38,10 +38,8 @@ let books = [
 // let foundItem = books.find(isBook)
 // console.log(foundItem)
 
-let foundItem = books.find(function (book) {
-    return book.title === "Cat in the Hat"
-})
-console.log(foundItem)
+let foundItem = books.find((book) => book.title === "Cat in the Hat");
+console.log(foundItem);
 
 //will find a given book
 function isBook(book) {
@@ -49,5 +47,5 @@ function isBook(book) {
 }
 // will find the first book that needs to be restocked
 function stockFirst(item) {
-    return item.inventory < 3
+  return item.inventory < 3;
 }
