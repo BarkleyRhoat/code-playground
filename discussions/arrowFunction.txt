@@ -18,41 +18,41 @@ and similarities in how arrow functions behave.
 Examples: Arrow Function Shortcuts
 ------------------------------------
 
-Example 1:
+Example 1:// explicit
   const playMusic = function (music) {
     return "Playing some " + music;
   };
   playMusic("Jazz"); // "Playing some Jazz"
 
-Example 2:
+Example 2: // explicit
   const playMusic = (music) => {
     return "Playing some " + music;
   };
-  playMusic("Jazz"); // "Playing some Jazz"
+  playMusic("Jazz"); // "Playing some Jazz" 
 
-Example 3:
+Example 3: // explicit
   const playMusic = (music) => {
-    "Playing some " + music;
+    "Playing some " + music; // add return
   };
   playMusic("Jazz"); // undefined
 
-Example 4:
+Example 4: // implicit
   const playMusic = (music) => "Playing some " + music;
   playMusic("Jazz"); // "Playing some Jazz"
 
-Example 5:
+Example 5: // implicit, one argument you don't need ()
   const playMusic = music => "Playing some " + music;
   playMusic("Jazz"); // "Playing some Jazz"
 
-Example 6:
+Example 6: // explicit, when returning with upticks you need to use string interpolation to call the variables(parameters)
   const readBooks = (book1, book2) => {
     return `I read '${book1}' and '${book2}'`;
   };
   readBooks("The Old Man and the Sea", "1984"); // "I read 'The Old Man and the Sea' and '1984'"
 
-Example 7:
+Example 7: // implicit 
   const readBooks = (book1, book2) => `I read '${book1}' and '${book2}'`;
   readBooks("The Old Man and the Sea", "1984"); // "I read 'The Old Man and the Sea' and '1984'"
 
-Example 8:
+Example 8: // implicit  you need to put the arguments in () since there are multiple. 
   const readBooks = book1, book2 => `I read '${book1}' and '${book2}'` // Syntax Error
