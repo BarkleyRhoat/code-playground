@@ -1,0 +1,58 @@
+Arrow Functions Discussion Questions
+=====================================
+
+Learning Goals
+--------------
+* Recognize different types of function syntax
+
+Instructions
+------------
+Arrow functions are a relatively new feature that was introduced with ES6.
+They use a different syntax and carry slightly different behavior than
+function expressions.
+
+Take a look at the following code examples and return values with your table
+partners. Without looking anything up, see if you can deduce the differences
+and similarities in how arrow functions behave.
+
+Examples: Arrow Function Shortcuts
+------------------------------------
+
+Example 1:
+  const playMusic = function (music) {
+    return "Playing some " + music;
+  };
+  playMusic("Jazz"); // "Playing some Jazz"
+
+Example 2:
+  const playMusic = (music) => {
+    return "Playing some " + music;
+  };
+  playMusic("Jazz"); // "Playing some Jazz"
+
+Example 3:
+  const playMusic = (music) => {
+    "Playing some " + music;
+  };
+  playMusic("Jazz"); // undefined
+
+Example 4:
+  const playMusic = (music) => "Playing some " + music;
+  playMusic("Jazz"); // "Playing some Jazz"
+
+Example 5:
+  const playMusic = music => "Playing some " + music;
+  playMusic("Jazz"); // "Playing some Jazz"
+
+Example 6:
+  const readBooks = (book1, book2) => {
+    return `I read '${book1}' and '${book2}'`;
+  };
+  readBooks("The Old Man and the Sea", "1984"); // "I read 'The Old Man and the Sea' and '1984'"
+
+Example 7:
+  const readBooks = (book1, book2) => `I read '${book1}' and '${book2}'`;
+  readBooks("The Old Man and the Sea", "1984"); // "I read 'The Old Man and the Sea' and '1984'"
+
+Example 8:
+  const readBooks = book1, book2 => `I read '${book1}' and '${book2}'` // Syntax Error
