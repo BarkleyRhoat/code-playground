@@ -14,19 +14,29 @@ For the following functions, fill in the table with the types of the inputs and 
 Function
 types of inputs
 type of output
-function addFive(number) { return number + 5}
+function addFive(number) { return number + 5}; addFive(8)
+input = number
+output = number + 5 === addFive(8) output would be 13
 
 
-function sum(A, B) { return A + B }
+function sum(A, B) { return A + B }; sum(1, 2)
+input = two values
+output = a + b ==== sum(1, 2) = 3
 
 
-function concat(A, B) { return "" + A + B }
+function concat(A, B) { return "" + A + B } concat('apple', 'banana')
+input = two values (any type)
+output a string combining a & b === concat(apple, banana) " applebanana"
 
 
-document.querySelector
+document.querySelector(".button")
+input = css selector string
+output = first matching DOM element. 
 
 
-window.fetch
+window.fetch("myUrlHere") fetch()
+input = URL (string or request object specifying the resource to fetch )
+output = Response object returning server response
 
 
 "Shapes" of Objects
@@ -66,23 +76,34 @@ function birthday(person) {
 function getDistance(pointA, pointB) {
   return Math.sqrt((pointA.x - pointB.x) ** 2 + (pointA.y - pointB.y) ** 2);
 }
+
 Fill in the table using the 'shape' shorthand
 Function
 types of inputs
 type of output
-getName
+const getName = (person) => person.name;
+input = person
+output = persons name
 
 
-getAge
+const getAge = (person) => person,age;
+input = person
+output = number
 
 
-makePerson
+const makePerson = (name, age) => ({name, age})
+input = name & age
+output = person object
 
 
-birthday
+const birthday = (person) => (person.age += 1, person)
+input = person
+output = person age increased by 1 
 
 
-getDistance
+const getDistance = (pointA, pointB) => Math.sqrt((pointA.x - pointB.x) ** 2 + (pointA.y - pointB.y) ** 2);
+input = pointA & pointB objects
+output = number representing distance between pointA and pointB
 
 
 Function Signatures
@@ -96,23 +117,39 @@ Function
 types of inputs
 type of output
 function signature
-getName
+
+getName  
+input = person 
+output = string
+signature = getName(person: Person): string
 
 
 
-getAge
+getAge 
+input  = person
+output = string
+signature = getAge(person: Person): number
 
 
 
-makePerson
+makePerson 
+input = string, number
+output = person
+signature = makePerson(name: string, age: number): Person
 
 
 
 birthday
+input = person
+output = person
+signature = birthday(person: Person): Person
 
 
 
 getDistance
+input = point, point
+output = number (distance between 2 points)
+signature = getDistance(pointA: Point, pointB: Point): number
 
 
 
@@ -123,35 +160,53 @@ Operator
 types of inputs
 type of output
 function signature
-*
-number, number
-number
-multiply(a: number, b: number): number
-+ (string)
 
+*
+input = number, number
+output = number
+signature = multiply(a: number, b: number): number
+
++ (string)
+input = string, string
+output = string
+signature = add(a: string, b: any): string
 
 
 + (number)
-
+input = number, number
+output = number
+signature = add(a: number, b: number): number
 
 
 -
-
+input = number, number
+output = number
+signature = subtract(a: number, b: number): number
 
 
 ^
+input = number, number
+output = number
+signature = xor(a: number, b: number): number
 
 
 
 **
-
+input = number, number
+output = number
+signature = power(base: number, exponent: number): number
 
 
 \
-\
+input = number, number
+output = number
+signature = divide(a: number, b: number): number
 
 
 &&
+input = boolean, boolean 
+output = boolean 
+signature = boolean(a: boolean, b: boolean): boolean
 
 
 
@@ -163,26 +218,35 @@ Function
 types of inputs
 type of output
 function signature
+
 EventTarget.addEventListener
-string, handler(e: Event): void
-void
-addEventListener(type: string, handler: function): void
+input = string, handler(e: Event): void
+output = void
+signature = addEventListener(type: string, handler: function): void
+
 window.setTimeout
-
-
+input = callback(): void, number
+output = number
+signature = setTimeout(callback(): void, delay: number): number
 
 Array.prototype.map
-
-
+input = callback(item: T): U 
+output = U[]
+signature = map(callback(item: T): U): U[]
 
 Array.prototype.find
-
-
+input = callback(item: T): boolean
+output = T
+signature = find(callback(item: T): boolean): T
 
 Array.prototype.filter
-
+input = callback(item: T): boolean
+output = T[]
+signature = filter(callback(item: T): boolean): T[]
 
 
 Array.prototype.reduce
-
+input = callback(acc: U, item: T): U, U
+output = U
+signature = reduce(callback(acc: U, item: T): U, initialValue: U): U
 
