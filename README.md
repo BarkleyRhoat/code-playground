@@ -23,12 +23,10 @@ cd code-playground
 git checkout -b your-branch-name
 ```
 
-### 3. Set the upstream and push
-
-On your first push, set the upstream so future pushes automatically create a compare & pull request against `main`:
+### 3. Push your branch
 
 ```bash
-git push -u origin your-branch-name
+git push origin your-branch-name
 ```
 
-After that, you can simply run `git push` and GitHub will prompt you with a link to open a pull request.
+Then go to the repo page on GitHub and click **Compare & pull request** to open a PR against `main`.
