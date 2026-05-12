@@ -23,7 +23,15 @@ cd code-playground
 git checkout -b your-branch-name
 ```
 
-### 3. Push your branch
+### 3. Stage and commit your changes
+
+> **For me to look at PR provide good commit messages.**
+```bash
+git add .
+git commit -m "your commit message"
+```
+
+### 4. Push your branch
 
 ```bash
 git push origin your-branch-name
