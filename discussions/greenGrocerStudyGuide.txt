@@ -1,0 +1,95 @@
+// Defines a function named consolidateCart that accepts cart, expected to be an array of item objects. -high
+const consolidateCart = (cart) => { // parameter can be anything as long as you pass it throughout the function
+  // Uses reduce to build a single object from the cart array. counts is the accumulator object.
+  return cart.reduce((counts, item) => { // .reduce here for condensing entire object into single value!!!!
+    // Gets the item name from the object key. Each cart element is assumed to look like { "ITEM_NAME": { price: X, clearance: true/false } }.
+    const name = Object.keys(item)[0];
+    // Extracts the price and clearance values for that item.
+    const { price, clearance } = item[name];
+    // If the item name already exists in counts, increment its count.
+    // Otherwise, add a new entry with price, clearance, and count: 1.
+    if (counts[name]) {
+      counts[name].count += 1;
+    } else {
+      counts[name] = { price, clearance, count: 1 };
+    }
+    // Returns the consolidated object where each item name maps to a single object holding quantity and item data.
+    return counts;
+  }, {});
+};
+
+// Defines a function that takes the consolidated cart object and an array of coupons.
+const applyCoupons = (cart, coupons) => {
+  // Loops through each coupon.
+  for (const coupon of coupons) {
+    // Checks whether the cart contains the coupon item and has enough quantity to apply the coupon.
+    if (cart[coupon.item] && cart[coupon.item].count >= coupon.num) {
+      // Sets the item name, computes how many coupon groups fit in the quantity, and creates a new key for the discounted version.
+      const name = coupon.item;
+      const couponCount = Math.floor(cart[name].count / coupon.num);
+      const couponKey = `${name} W/COUPON`;
+      // If the cart already has a “with coupon” entry, add to its count.
+      // Otherwise, add a new coupon entry with the coupon price, same clearance status as the original item, and coupon quantity.
+      if (cart[couponKey]) {
+        cart[couponKey].count += couponCount;
+      } else {
+        cart[couponKey] = {
+          price: coupon.cost,
+          clearance: cart[name].clearance,
+          count: couponCount,
+        };
+      }
+      // Subtracts the number of items used by the coupon groups from the original item’s count.
+      cart[name].count -= coupon.num * couponCount;
+    }
+  }
+  // Returns the cart object updated with coupon-applied entries.
+  return cart;
+};
+
+//Defines a function to apply clearance discounts to each item in the cart.
+const applyClearance = (cart) => {
+  // Iterates over each item key in the cart object.
+  for (const item in cart) {
+    // Copies the existing item object.
+    //If clearance is true, reduces price by 20% and rounds to two decimals.
+    //Otherwise leaves price unchanged.
+    cart[item] = {
+      ...cart[item],
+      price: cart[item].clearance
+        ? parseFloat((cart[item].price * 0.8).toFixed(2))
+        : cart[item].price,
+    };
+  }
+  // Returns the modified cart.
+  return cart;
+};
+
+// Defines the main checkout function that accepts the raw cart array and coupon array.
+function checkout(cart, coupons) {
+  // Consolidates the cart array into an object with counts.
+  let consolidatedCart = consolidateCart(cart);
+  // Applies coupons to the consolidated cart.
+  let cartWithCoupons = applyCoupons(consolidatedCart, coupons);
+  // Applies clearance discounts after coupons.
+  let cartWithClearance = applyClearance(cartWithCoupons);
+  // Initializes total.
+  //Adds up price * count for every item in the final cart
+  let total = 0;
+  for (let item in cartWithClearance) {
+    total += cartWithClearance[item].price * cartWithCoupons[item].count;
+  }
+  // If the total is over $100, applies a 10% overall discount.
+  if (total > 100) {
+    total = total - total * 0.1;
+  }
+  // Returns the final total price.
+  return total;
+}
+
+
+// Summary !!!!
+//consolidateCart combines duplicate items and tracks quantity.
+//applyCoupons transforms eligible items into coupon-priced entries and adjusts counts.
+//applyClearance reduces clearance item prices by 20%.
+//checkout runs all steps, sums the final total, and applies a bulk discount over $100.

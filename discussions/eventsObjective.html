@@ -1,0 +1,74 @@
+Discussion Questions: Events
+Objectives
+Recall the different types of JavaScript Events
+Identify when the DOMContentLoaded event will trigger
+Implement a callback attached to an event handler
+Exercise
+Take a look at each of the code samples below. For each sample, work with your group to answer the following questions.
+
+What does each line of code do?
+How does this piece of code work?
+Given this code sample, what can you learn or describe about JavaScript
+Example 1
+// index.html ...
+
+// button element with id of notify and text "Click me"
+<button id="notify">Click Me!</button>
+
+<script src="https://raw.githubusercontent.com/learn-co-curriculum/fewpjs-discussion-questions-events/master/index.js"></script>
+// index.js
+
+const button = document.getElementById("notify") //variable button that creates a selector on said button element with the id of "notify"
+button.addEventListener('click', function(){ //creates a click event on button that will trigger a call back function that will print "Printing a Message!" to the console
+  console.log("Printing a Message!")
+})
+Example 2
+// index.html ...
+
+<button id="notify">Click Me!</button>
+
+<script src="https://raw.githubusercontent.com/learn-co-curriculum/fewpjs-discussion-questions-events/master/index.js"></script>
+// index.js
+const button = document.getElementById("notify") //variable button that creates a selector on said button element with the id of "notify"
+button.addEventListener('mouseover', function(){ //creates a "mouseover" event on button that will trigger a call back function that will print "Printing a Message!" to the console
+  console.log("Printing a Message!")
+})
+Example 3
+// index.html ...
+<script src="https://raw.githubusercontent.com/learn-co-curriculum/fewpjs-discussion-questions-events/master/index.js"></script>
+
+<button id="notify">Click Me!</button> // this needs to be above the script tag
+
+// index.js
+const button = document.getElementById("notify") //variable button that creates a selector on said button element with the id of "notify"
+button.addEventListener('mouseover', function(){ //creates a "mouseover" event on button that will trigger a call back function that will print "Printing a Message!" to the console
+  console.log("Printing a Message!")
+})
+Example 4
+// index.html ...
+<script src="https://raw.githubusercontent.com/learn-co-curriculum/fewpjs-discussion-questions-events/master/index.js"></script>
+
+<button id="notify">Click Me!</button>
+
+// index.js
+document.addEventListener("DOMContentLoaded", function(){ //adding event for html to be loaded before javascript code is executed
+  const button = document.getElementById("notify")
+  button.addEventListener('mouseover', function(){
+    console.log("Printing a Message!")
+  })
+});
+Example 5
+Oops. Looks like this developer made some mistakes typing. Identify the mistakes.
+
+// index.html ...
+<script src="https://raw.githubusercontent.com/learn-co-curriculum/fewpjs-discussion-questions-events/master/index.js"></script>
+
+<button id="notifiable">Click Me!</button>
+
+// index.js
+document.addEventListener("DOMContentLoaded", function(){
+  const button = document.getElementById("notifliable")
+  button.addEventListener('click', function(){
+    console.log("Printing a Message!")
+  })
+});
